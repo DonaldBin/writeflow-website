@@ -1,43 +1,45 @@
+"use client";
+
 import { Keyboard, MousePointerClick, Cpu, Mail, MessageCircle, FileText, ClipboardList } from "lucide-react";
-
-const features = [
-  {
-    icon: Keyboard,
-    title: "Tab 智能续写",
-    description:
-      "光标处按下 Tab，AI 自动理解上下文，续写出连贯内容。写邮件、发推文、填表单，一气呵成。",
-  },
-  {
-    icon: MousePointerClick,
-    title: "划词即时改写",
-    description:
-      "选中任意网页上的文字，一键改写、润色、翻译、总结。无需复制粘贴，原地完成。",
-  },
-  {
-    icon: Cpu,
-    title: "多模型智能路由",
-    description:
-      "自动调用 DeepSeek + Kimi 双引擎，短文本快、长文本稳，智能选择最优模型。",
-  },
-];
-
-const useCases = [
-  { icon: Mail, label: "写邮件" },
-  { icon: MessageCircle, label: "发社交媒体" },
-  { icon: FileText, label: "写报告/论文" },
-  { icon: ClipboardList, label: "填表单/写评价" },
-];
+import { useTranslation } from "@/lib/i18n";
 
 export function Features() {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: Keyboard,
+      title: t("home.feature1Title") as string,
+      description: t("home.feature1Desc") as string,
+    },
+    {
+      icon: MousePointerClick,
+      title: t("home.feature2Title") as string,
+      description: t("home.feature2Desc") as string,
+    },
+    {
+      icon: Cpu,
+      title: t("home.feature3Title") as string,
+      description: t("home.feature3Desc") as string,
+    },
+  ];
+
+  const useCases = [
+    { icon: Mail, label: t("home.useCase1") as string },
+    { icon: MessageCircle, label: t("home.useCase2") as string },
+    { icon: FileText, label: t("home.useCase3") as string },
+    { icon: ClipboardList, label: t("home.useCase4") as string },
+  ];
+
   return (
     <section className="w-full bg-slate-50 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            核心功能
+            {t("home.featuresTitle")}
           </h2>
           <p className="mt-4 text-lg text-slate-500">
-            三大核心能力，覆盖你的每一个写作场景
+            {t("home.featuresSubtitle")}
           </p>
         </div>
 
@@ -63,7 +65,7 @@ export function Features() {
         {/* Use cases */}
         <div className="mt-20">
           <h3 className="text-center text-xl font-semibold text-slate-900 mb-8">
-            适用场景
+            {t("home.useCasesTitle")}
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {useCases.map((useCase) => (
